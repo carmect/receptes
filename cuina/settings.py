@@ -25,7 +25,7 @@ SECRET_KEY = 'chw^wzm8954apn-a$)bp553t&q-%qqi(cs^2ip65%o1qit(39&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'receptescarmect.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'receptescarmect.pythonanywhere.com', 'cuina.grupcerda.es']
 
 
 # Application definition
