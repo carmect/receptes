@@ -1,0 +1,13 @@
+{% extends 'receptes/base.html' %}
+
+{% block content %}
+    <div class="recepta">
+        {% if recepta.data_creacio %}
+            <div class="date">
+                {{ recepta.data_creacio }}
+            </div>
+        {% endif %}
+        <h1>{{ recepta.title }}</h1>
+        <p>{{ recepta.descripcio|linebreaksbr }}</p>
+    </div>
+{% endblock %}

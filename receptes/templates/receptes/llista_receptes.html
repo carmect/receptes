@@ -1,11 +1,13 @@
-<html>
-<head>
-<title>Llistat de receptes</title>
-</head>
-<body>
-    <div>
-        <h1><a href="/">Llistat de receptes en django</a></h1>
-    </div>
-    {% for recepta in receptes %} <div> <p>Creat el: {{ recepta.data_creacio }} </p> <h2> {{ recepta.title }} </h2> <p> {{ recepta.descripcio|linebreaksbr }} </p> </div> {% endfor %}
-</body>
-</html>
+{% extends 'receptes/base.html' %}
+
+{% block content %}
+    {% for recepta in receptes %}
+        <div class="recepta">
+            <div class="date">
+                <p>Creat el: {{ recepta.data_creacio }}</p>
+            </div>
+            <h1><a href="{% url 'recepta_detall' pk=recepta.pk %}">{{ recepta.title }}</a></h1>
+            <p>{{ recepta.descripcio|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
