@@ -7,7 +7,7 @@
                 <p>Creat el: {{ recepta.data_creacio }}</p>
             </div>
             <h1><a href="{% url 'recepta_detall' pk=recepta.pk %}">{{ recepta.title }}</a></h1>
-            <p>{{ recepta.descripcio|linebreaksbr }}</p>
+            <p>{{ recepta.descripcio|linebreaksbr|truncatechars:200 }}</p>
         </div>
     {% endfor %}
 {% endblock %}

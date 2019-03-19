@@ -30,3 +30,26 @@ class Recepta(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Ingredient(models.Model):
+    nom = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nom
+
+        
+class Mesura(models.Model):
+    nom = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return self.nom
+        
+class Comentari(models.Model):
+    recepta = models.ForeignKey('receptes.Recepta', on_delete=models.CASCADE, related_name='comentaris')
+    autor = models.CharField(max_length=200)
+    text = models.TextField()
+    data_creacio = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.text

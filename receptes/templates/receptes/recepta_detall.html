@@ -10,4 +10,14 @@
         <h1>{{ recepta.title }}</h1>
         <p>{{ recepta.descripcio|linebreaksbr }}</p>
     </div>
+    <hr>
+    {% for comentari in recepta.comentaris.all %}
+        <div class="comentari">
+            <div class="date">{{ comentari.data_creacio }}</div>
+            <strong>{{ comentari.autor }}</strong>
+            <p>{{ comentari.text|linebreaks }}</p>
+        </div>
+    {% empty %}
+        <p>No hi ha cap comentari</p>
+    {% endfor %}
 {% endblock %}
