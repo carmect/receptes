@@ -10,6 +10,7 @@
 <body>
     <div class="page-header">
         {% if user.is_authenticated %}
+            <a href="{% url 'recepta_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus">+</span></a>
             <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-plus">Logout</span></a>
         {% endif %}
         <h1><a href="/">Llistat de receptes en django</a></h1>
