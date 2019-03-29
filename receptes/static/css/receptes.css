@@ -1,7 +1,17 @@
+@font-face{
+    font-family:'icomoon';
+    src:url(../fonts/icomoon.eot) format("embedded-opentype"),url(../fonts/icomoon.ttf) format("truetype"),url(../fonts/icomoon.woff) format("woff"),url(../fonts/icomoon.svg) format("svg");
+    font-weight:400;
+    font-style:normal
+}
+.icon-reverse:before{font-family: icomoon; content:""}
+.icon-cullera:before{font-family: icomoon; content:""}
+
 .page-header {
     background-color: #ff9400;
     margin-top: 0;
-    padding: 20px 20px 20px 40px;
+    padding: 40px 20px 20px 60px;
+    /*height: 100px;*/
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
@@ -10,8 +20,13 @@
     text-decoration: none;
 }
 
-.content {
-    margin-left: 40px;
+.section-title {
+    padding-bottom: 25px;
+}
+
+.boto_titol {
+    display: block;
+    width: 150px;
 }
 
 h1, h2, h3, h4 {
@@ -49,3 +64,8 @@ h1, h2, h3, h4 {
 .comentari {
     margin: 20px 0px 20px 20px;
 }
+
+a:hover {
+    border-bottom: none; 
+}
+

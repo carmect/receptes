@@ -6,4 +6,4 @@ class ReceptaForm(forms.ModelForm):
 
     class Meta:
         model = Recepta
-        fields = ('title', 'descripcio')
+        fields = ('titol', 'descripcio')

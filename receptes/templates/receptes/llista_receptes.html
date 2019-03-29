@@ -6,8 +6,10 @@
             <div class="date">
                 <p>Creat el: {{ recepta.data_creacio }}</p>
             </div>
-            <h1><a href="{% url 'recepta_detall' pk=recepta.pk %}">{{ recepta.title }}</a></h1>
-            <p>{{ recepta.descripcio|linebreaksbr|truncatechars:200 }}</p>
+            <h1><a href="{% url 'recepta_detall' pk=recepta.pk %}">{{ recepta.titol }}</a></h1>
+            {% autoescape off %}
+            <p>{{ recepta.descripcio|linebreaksbr|truncatechars_html:200|safe }}</p>
+            {% endautoescape %}
         </div>
     {% endfor %}
 {% endblock %}

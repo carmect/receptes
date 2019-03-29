@@ -5,14 +5,21 @@ from django.utils import timezone
 class Ingredient(models.Model):
     nom = models.CharField(max_length=50)
     mesura = models.ForeignKey('receptes.Mesura', on_delete=models.PROTECT)
+    
+    class Meta:
+        ordering = ['nom']
+        indexes = [
+            models.Index(fields=['nom',]),
+            ]
 
     def __str__(self):
         return self.nom + " (" + self.mesura.nom + ")"
         
 
 class Recepta(models.Model):
-    title = models.CharField(max_length=200)
+    titol = models.CharField(max_length=200)
     descripcio = models.TextField()
+    foto = models.ImageField(upload_to = 'fotos/', default = 'fotos/no-img.jpg')
     data_creacio = models.DateTimeField(
             default=timezone.now, editable=False)
 
@@ -67,13 +74,22 @@ class Recepta(models.Model):
         self.data_consumit = timezone.now
         self.data_programat = timezone.null
         self.save()
+        
+    class Meta:
+        indexes = [
+            models.Index(fields=['titol',]),
+            #models.Index(fields=['descripcio',]),
+            ]
 
     def __str__(self):
-        return self.title
+        return self.titol
 
         
 class Mesura(models.Model):
     nom = models.CharField(max_length=20, unique=True)
+    
+    class Meta:
+        ordering = ['nom']
     
     def __str__(self):
         return self.nom
@@ -86,7 +102,7 @@ class Comentari(models.Model):
     data_creacio = models.DateTimeField(default=timezone.now, editable=False)
 
     def __str__(self):
-        return self.text
+        return self.titol
         
         
 class ReceptaIngredient(models.Model):
@@ -95,5 +111,5 @@ class ReceptaIngredient(models.Model):
     quantitat = models.PositiveSmallIntegerField()
     
     def __str__(self):
-        return self.recepta.title + " - " + self.ingredient.nom
+        return self.recepta.titol + " - " + self.ingredient.nom
     

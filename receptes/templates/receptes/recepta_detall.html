@@ -1,23 +1,112 @@
 {% extends 'receptes/base.html' %}
 
 {% block content %}
-    <div class="recepta">
-        {% if recepta.data_creacio %}
-            <div class="date">
-                {{ recepta.data_creacio }}
+    <section class="recepta">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row pt-5">
+                    <div class="col-md-6 align-self-center py-1">
+                        <div class="row section-title">
+                            <div class="col mx-auto">
+                                <h1 class="text-center">
+                                    {{ recepta.titol }}
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-success mx-auto my-1 boto_titol">
+                                    Fer_avui
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                 
+                                <button type="button" class="btn btn-success mx-auto my-1 boto_titol">
+                                    Afegir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 py-1">
+                        <img alt="{{ recepta.titol }}" src="{{ recepta.foto.url }}">
+                    </div>
+
+                </div>
+                
+                <div class="row pt-5">
+                    <div class="col-md-4 py-1">
+                        <section class="ingredients">
+                            <h2>Ingredients</h2>
+                            {% for ingredient in recepta.receptaingredient_set.all %}
+                                <li>{{ ingredient.quantitat }} {{ ingredient.ingredient.mesura }} {{ ingredient.ingredient.nom }}</li>
+                            {% empty %}
+                                <p>No hi ha ingredients</p>
+                            {% endfor %}
+                        </section>
+                    </div>
+                    <div class="col-md-8 py-1">
+                        <section class="preparacio_recepta">
+                            <h2>Preparació</h2>
+                            {% autoescape off %}
+                            <p>{{ recepta.descripcio|linebreaksbr|safe }}</p>
+                            {% endautoescape %}
+                        </section>
+                    </div>
+                </div>
             </div>
-        {% endif %}
-        <h1>{{ recepta.title }}</h1>
-        <p>{{ recepta.descripcio|linebreaksbr }}</p>
-    </div>
-    <hr>
-    {% for comentari in recepta.comentaris.all %}
-        <div class="comentari">
-            <div class="date">{{ comentari.data_creacio }}</div>
-            <strong>{{ comentari.autor }}</strong>
-            <p>{{ comentari.text|linebreaks }}</p>
         </div>
-    {% empty %}
-        <p>No hi ha cap comentari</p>
-    {% endfor %}
+    </section>
+    <hr>
+    
+    <section class="comentaris">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Comentaris</h3>
+                {% for comentari in recepta.comentaris.all %}
+                    <div class="comentari">
+                        <div class="date">{{ comentari.data_creacio }}</div>
+                        <strong>{{ comentari.titol }}</strong>
+                        <p>{{ comentari.text|linebreaks|safe }}</p>
+                    </div>
+                {% empty %}
+                    <p>No hi ha cap comentari</p>
+                {% endfor %}
+            </div>
+        </div>
+        
+    </section>
+    
+    
+    <section class="finestra">
+        <a id="modal-153653" href="#modal-container-153653" role="button" class="btn" data-toggle="modal">Prova de finestra modal</a>
+        
+        <div class="modal fade" id="modal-container-153653" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">
+                            Modal title
+                        </h5> 
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                         
+                        <button type="button" class="btn btn-primary">
+                            Save changes
+                        </button> 
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
 {% endblock %}
