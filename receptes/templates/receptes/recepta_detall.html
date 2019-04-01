@@ -30,8 +30,28 @@
                     <div class="col-md-6 py-1">
                         <img alt="{{ recepta.titol }}" src="{{ recepta.foto.url }}">
                     </div>
-
                 </div>
+                
+                {% if recepta.thermomix %}
+                <core-feature-icons class="core-feature-icons--large">
+                    <div id="rc-icon-difficulty" class="core-feature-icons__item">
+                      <span id="rc-icon-difficulty-icon" class="core-feature-icons__icon icon icon-capell" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0"></span>
+                      <label id="rc-icon-difficulty-text" class="core-feature-icons__text"><span class="core-feature-icons__subtitle">Dificultat</span> {{ recepta.get_dificultat_display }} </label>
+                    </div>
+                    <div id="rc-icon-active-time" class="core-feature-icons__item">
+                      <span id="rc-icon-active-time-icon" class="core-feature-icons__icon icon icon-preparacio" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0"></span>
+                      <label id="rc-icon-active-time-text" class="core-feature-icons__text"><span class="core-feature-icons__subtitle">Tiempo de preparación</span> {{recepta.temps_preparacio}} </label>
+                    </div>
+                    <div id="rc-icon-total-time" class="core-feature-icons__item">
+                      <span id="rc-icon-total-time-icon" class="core-feature-icons__icon icon icon-temps" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0"></span>
+                      <label id="rc-icon-total-time-text" class="core-feature-icons__text"><span class="core-feature-icons__subtitle">Tiempo total</span> {{recepta.temps_total}} </label>
+                    </div>
+                    <div id="rc-icon-quantity" class="core-feature-icons__item">
+                      <span id="rc-icon-quantity-icon" class="core-feature-icons__icon icon icon-plat" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0"></span>
+                      <label id="rc-icon-quantity-icon-text" class="core-feature-icons__text"><span class="core-feature-icons__subtitle">Raciones</span> {{recepta.racions}} raciones</label>
+                    </div>
+                </core-feature-icons>
+                {% endif %}
                 
                 <div class="row pt-5">
                     <div class="col-md-4 py-1">
