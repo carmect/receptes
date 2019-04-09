@@ -15,11 +15,22 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.nom + " (" + self.mesura.nom + ")"
         
-
+        
+class Categoria(models.Model):
+    nom = models.CharField(max_length=40, unique=True)
+    
+    class Meta:
+        ordering = ['nom']
+        verbose_name_plural = u'Categories'
+        
+    def __str__(self):
+        return self.nom
+        
+        
 class Recepta(models.Model):
     titol = models.CharField(max_length=200)
     descripcio = models.TextField()
-    foto = models.ImageField(upload_to = 'fotos/', default = 'fotos/no-img.jpg')
+    foto = models.ImageField(upload_to = 'fotos/', default = '/fotos/no-img2.jpg')
     data_creacio = models.DateTimeField(
             default=timezone.now, editable=False)
 
@@ -62,6 +73,8 @@ class Recepta(models.Model):
         through='ReceptaIngredient',
     )
 
+    categories = models.ManyToManyField(Categoria)
+    
     def activa(self):
         self.actiu = True
         self.save()
@@ -80,7 +93,8 @@ class Recepta(models.Model):
             models.Index(fields=['titol',]),
             #models.Index(fields=['descripcio',]),
             ]
-
+        verbose_name_plural = u'Receptes'
+            
     def __str__(self):
         return self.titol
 
@@ -90,6 +104,7 @@ class Mesura(models.Model):
     
     class Meta:
         ordering = ['nom']
+        verbose_name_plural = u'Mesures'
     
     def __str__(self):
         return self.nom
@@ -112,4 +127,17 @@ class ReceptaIngredient(models.Model):
     
     def __str__(self):
         return self.recepta.titol + " - " + self.ingredient.nom
+
+        
+class Passa(models.Model):
+    recepta = models.ForeignKey('receptes.Recepta', on_delete=models.CASCADE, related_name='passes')
+    descripcio = models.CharField(max_length=100,default='')
+    ordre = models.PositiveSmallIntegerField(blank=True, null=True)
     
+    class Meta:
+        ordering = ['recepta__titol','ordre']
+        verbose_name_plural = u'Passes'
+        
+    def __str__(self):
+        return self.recepta.titol + " - " + str(self.ordre)
+        

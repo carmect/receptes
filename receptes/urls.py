@@ -8,3 +8,4 @@ urlpatterns = [
     path('recepta/<int:pk>/', views.recepta_detall, name='recepta_detall'),
     path('recepta/new', views.recepta_new, name='recepta_new'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

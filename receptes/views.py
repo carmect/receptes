@@ -19,3 +19,4 @@ def recepta_detall(request, pk):
 def recepta_new(request):
     form = ReceptaForm()
     return render(request, 'receptes/recepta_edit.html', {'form': form})
+    

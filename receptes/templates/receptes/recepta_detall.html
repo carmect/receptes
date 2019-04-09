@@ -26,8 +26,17 @@
                                 </button>
                             </div>
                         </div>
+                        {% if recepta.passes %}
+                        <div class="row">
+                            <div class="col mx-auto">
+                                <button type="button" class="btn btn-success mx-auto my-1 boto_titol">
+                                    Paso a paso
+                                </button>
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
-                    <div class="col-md-6 py-1">
+                    <div class="col-md-6 py-2">
                         <img alt="{{ recepta.titol }}" src="{{ recepta.foto.url }}">
                     </div>
                 </div>
