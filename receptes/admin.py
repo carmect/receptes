@@ -38,5 +38,3 @@ class ReceptaAdmin(admin.ModelAdmin):
 admin.site.register(Recepta, ReceptaAdmin)
 
 
-    
-    

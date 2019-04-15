@@ -14,7 +14,7 @@
 
 
 .page-header {
-    background-color: #ff9400;
+    background-color: olivedrab;
     margin-top: 0;
     padding: 40px 20px 20px 60px;
     /*height: 100px;*/
@@ -209,5 +209,13 @@ label {
 	line-height: 1.5rem;
 	margin: 0rem .5rem;
 	display: inline-block;
+}
+
+.modal-body {
+    background-color: sandybrown;
+}
+.carousel-inner {
+    width: 80%;
+    left: 80;
 }
 

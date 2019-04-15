@@ -29,8 +29,8 @@
                         {% if recepta.passes %}
                         <div class="row">
                             <div class="col mx-auto">
-                                <button type="button" class="btn btn-success mx-auto my-1 boto_titol">
-                                    Paso a paso
+                                <button type="button" class="btn btn-success mx-auto my-1 boto_titol" data-toggle="modal" data-target="#ModalCarousel">
+                                    Pas a pas
                                 </button>
                             </div>
                         </div>
@@ -105,6 +105,55 @@
         
     </section>
     
+    <section class="finestra pas_a_pas">
+        <!-- Modal -->
+        <div class="modal fade" id="ModalCarousel" tabindex="-1" role="dialog" aria-labelledby="ModalCarouselLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalCarouselLabel">
+                            {{recepta.titol}}
+                        </h5> 
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!--The main div for carousel-->
+                        <div id="carousel-modal-meu" class="carousel" data-interval="false">
+                            <!-- Sliding images statring here --> 
+                            <div class="carousel-inner"> 
+                                {% for passa in recepta.passes.all|dictsort:'ordre' %}
+                                    {% if forloop.first %}
+                                    <div class="carousel-item active">
+                                    {% else %}
+                                    <div class="carousel-item"> 
+                                    {% endif %}
+                                        <h3>{{ forloop.counter }} / {{ recepta.passes.count }}</h3>
+                                        {% autoescape off %}
+                                        <p>{{ passa.descripcio|linebreaksbr|safe }}</p>
+                                        {% endautoescape %}
+                                    </div> 
+                                {% empty %}
+                                    <p>No està definit</p>
+                                {% endfor %}
+                            
+                            </div>
+                            <!-- Next / Previous controls here -->
+                            <a class="carousel-control-prev" href="#carousel-modal-meu" data-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel-modal-meu" data-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </a>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <section class="finestra">
         <a id="modal-153653" href="#modal-container-153653" role="button" class="btn" data-toggle="modal">Prova de finestra modal</a>
