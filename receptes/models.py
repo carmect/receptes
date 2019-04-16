@@ -30,7 +30,7 @@ class Categoria(models.Model):
 class Recepta(models.Model):
     titol = models.CharField(max_length=200)
     descripcio = models.TextField()
-    foto = models.ImageField(upload_to = 'fotos/', default = '/fotos/no-img2.jpg')
+    foto = models.ImageField(upload_to = 'fotos/', default = '/no-img.jpg')
     data_creacio = models.DateTimeField(
             default=timezone.now, editable=False)
 
