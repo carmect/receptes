@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 class Ingredient(models.Model):
-    nom = models.CharField(max_length=50)
+    nom = models.CharField(max_length=100)
     mesura = models.ForeignKey('receptes.Mesura', on_delete=models.PROTECT)
     
     class Meta:
@@ -131,7 +131,7 @@ class ReceptaIngredient(models.Model):
         
 class Passa(models.Model):
     recepta = models.ForeignKey('receptes.Recepta', on_delete=models.CASCADE, related_name='passes')
-    descripcio = models.CharField(max_length=100,default='')
+    descripcio = models.CharField(max_length=200,default='')
     ordre = models.PositiveSmallIntegerField(blank=True, null=True)
     
     class Meta:
