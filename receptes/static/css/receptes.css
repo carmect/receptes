@@ -12,6 +12,11 @@
 .icon-preparacio:before{font-family: icomoon; content:"\e60e"}
 .icon-plat:before{font-family: icomoon; content:"\e60f"}
 
+nobr {
+    display: inline-block;
+    font-weight: bold;
+}
+
 
 .page-header {
     background-color: olivedrab;
@@ -211,7 +216,7 @@ label {
 	display: inline-block;
 }
 
-.modal-body {
+.modal-body.pas_a_pas {
     background-color: sandybrown;
 }
 .carousel-inner {
